@@ -1,0 +1,23 @@
+class Solution {
+    public int maxSumDistinctTriplet(int[] x, int[] y) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        // Step 1: Map each unique x[i] to the maximum y[i]
+        for (int i = 0; i < x.length; i++) {
+            int xi = x[i];
+            int yi = y[i];
+            map.put(xi, Math.max(map.getOrDefault(xi, 0), yi));
+        }
+
+        // Step 2: Check if at least 3 distinct x values exist
+        if (map.size() < 3)
+            return -1;
+
+        // Step 3: Collect all max y-values and get top 3
+        List<Integer> yValues = new ArrayList<>(map.values());
+        Collections.sort(yValues, Collections.reverseOrder());
+
+        return yValues.get(0) + yValues.get(1) + yValues.get(2);
+
+    }
+}
