@@ -1,4 +1,4 @@
-class Solution {
+class Longest_subarray_with_sum_K{
     public int longestSubarray(int[] nums, int k) {
         int n = nums.length;
         int MaxLength = 0;
